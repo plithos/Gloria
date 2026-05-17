@@ -5,12 +5,24 @@
 <title>Pour toi 💖</title>
 
 <style>
-body {
+ 
+ /* reset */
+* {
     margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* base */
+html, body {
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* body */
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +30,7 @@ body {
 
     background-image: url("social_-_Whisper_of_the_Heart.jpg");
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     background-size: cover;
 
     position: relative;
@@ -28,10 +40,7 @@ body {
 body::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0, 0, 0, 0.55);
     z-index: 0;
 }
@@ -41,30 +50,53 @@ body::before {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 30px;
+
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 20px;
+
     backdrop-filter: blur(10px);
     box-shadow: 0 0 30px rgba(255,0,100,0.3);
-    max-width: 500px;
 }
 
 /* titre */
 h1 {
     color: #ff4d6d;
+    font-size: clamp(20px, 5vw, 28px);
+    margin-bottom: 10px;
 }
 
-/* bouton */
+/* texte */
+p {
+    font-size: clamp(14px, 4vw, 18px);
+    line-height: 1.5;
+}
+
+/* boutons */
 button {
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 10px 20px;
+
     border: none;
     border-radius: 30px;
+
     cursor: pointer;
+
     background: #ff4d6d;
     color: white;
-    font-size: 16px;
+
+    font-size: clamp(14px, 4vw, 16px);
     transition: 0.3s;
+
+    width: 100%;
+    max-width: 220px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 button:hover {
@@ -75,7 +107,7 @@ button:hover {
 .heart {
     position: absolute;
     color: #ff4d6d;
-    font-size: 20px;
+    font-size: 18px;
     animation: float 6s linear infinite;
     opacity: 0.6;
     z-index: 1;
@@ -83,14 +115,14 @@ button:hover {
 
 @keyframes float {
     0% {
-        transform: translateY(100vh) scale(1);
+        transform: translateY(100dvh);
         opacity: 0;
     }
     50% {
         opacity: 1;
     }
     100% {
-        transform: translateY(-10vh) scale(1.5);
+        transform: translateY(-10dvh);
         opacity: 0;
     }
 }
@@ -99,7 +131,6 @@ button:hover {
 .flower {
     position: absolute;
     top: -50px;
-    font-size: 20px;
     animation: fall linear infinite;
     opacity: 0.8;
     z-index: 1;
@@ -107,33 +138,35 @@ button:hover {
 
 @keyframes fall {
     0% {
-        transform: translateY(-10vh) rotate(0deg);
+        transform: translateY(-10dvh) rotate(0deg);
         opacity: 0;
     }
     10% {
         opacity: 1;
     }
     100% {
-        transform: translateY(110vh) rotate(360deg);
+        transform: translateY(110dvh) rotate(360deg);
         opacity: 0;
     }
 }
 
-/* ✨ particules dorées */
+/* ✨ particules */
 .sparkle {
     position: absolute;
     width: 6px;
     height: 6px;
+
     background: gold;
     border-radius: 50%;
     box-shadow: 0 0 10px gold;
+
     animation: sparkleFall linear forwards;
     z-index: 2;
 }
 
 @keyframes sparkleFall {
     0% {
-        transform: translateY(-10vh) scale(0);
+        transform: translateY(-10dvh) scale(0);
         opacity: 0;
     }
     10% {
@@ -141,8 +174,19 @@ button:hover {
         transform: scale(1);
     }
     100% {
-        transform: translateY(110vh) scale(0.5);
+        transform: translateY(110dvh) scale(0.5);
         opacity: 0;
+    }
+}
+
+/* 📱 mobile */
+@media (max-width: 480px) {
+    .card {
+        padding: 15px;
+    }
+
+    button {
+        padding: 8px 15px;
     }
 }
 </style>
